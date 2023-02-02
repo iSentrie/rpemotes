@@ -3614,8 +3614,6 @@ function UIMenu:UpdateScaleform()
         PopScaleformMovieFunction()
     end
 
-
-
     local count = 3
 
     for i = 1, #self.InstructionalButtons do
