@@ -198,7 +198,7 @@ end
 -- Emote props extractor
 local function ExtractEmoteProps(format)
     local format = tonumber(format)
-    local xt, c = '', ''
+    local xt, c, total = '', '', 0
     if format == 1 then
         print("Selected format: ^2\'prop_name\',")
         xt = '\''; c = ','
@@ -241,13 +241,17 @@ local function ExtractEmoteProps(format)
             if propValue and not exportedValues[propValue] then
                 file:write(xt .. propValue .. xt .. c ..'\n')
                 exportedValues[propValue] = true
+                total += 1
             end
             if secondPropValue and not exportedValues[secondPropValue] then
                 file:write(xt .. secondPropValue .. c ..'\n')
                 exportedValues[secondPropValue] = true
+                total += 1
             end
         end
     end
+
+    print('Exported props: '..total)
 
     -- close the file
     file:close()
